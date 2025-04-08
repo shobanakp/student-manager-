@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="facebook.css">
+    <title>Document</title>
+    <style>
+        .button {
+            width: 100%;
+            background-color: #0866ff;
+        }
+
+        .font {
+            font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: weight;
+            font-style: normal;
+            background-color: rgb(209, 188, 228);
+            background-image: -moz-element();
+        }
+
+        .font1 {
+            background-color: blueviolet;
+        }
+
+        .box {
+            width: 100%;
+        }
+
+        .outer-box {
+            height: 170px;
+
+        }
+
+        .button1 {
+            background-color: rgb(27, 158, 38);
+        }
+
+        .body {
+            background-color: rgb(253, 232, 246);
+            font-family: sans-serif;
+        }
+
+        .link {
+            text-decoration: none;
+
+        }
+    </style>
+</head>
+
+<!-- Login Page -->
+
+<body class="body font">
+    <div class="outer-box">
+    </div>
+    <div class="container">
+        <div class="row">
+            <!-- <div class="col-7">
+                <div class="logo">
+                    <img src="facebook.svg" width="300px" alt>
+                    <h3>Facebook helps you connect and share </h3>
+                    <h3>with the people in your life.</h3>
+                </div>
+            </div> -->
+            <form action="/login" method="post">
+            <div class="col-4 border shadow bg-body rounded text-center">
+                <h3 class="mt-4">Log in to Student Manager Application</h3>
+                <div>
+                    <input class="form-control my-5" type="text" placeholder="Username">
+                    <input class="form-control my-5" type="text" placeholder="Password">
+                    <input class=" box my-2 btn btn-primary button" type="button" value="Log in">
+                    <div class="text-center">
+                        <span class="mx-2">
+                            <a class="link" href>Forgotten account?</a>
+                        </span>
+                        <br>
+                        <br>
+                        <span><a class="btn btn-success button1 my-3" href="/login">Create
+                                new account</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Student Manager Application Registering new Student -->
+        <div class="container text-center mt-5 my-5">
+            <h1><b><i>Student Manager Application</i></b></h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h3>Register student</h3>
+                            <!-- In the Student Manager Application, Register the Students list in the table -->
+                            <form action="/" method="post">
+                                <input type="text" name="name" id="" placeholder="Enter the student name"
+                                    class="form-control my-3">
+                                <input type="number" name="age" id="" min="12" max="90"
+                                    placeholder="Enter the student age" class="form-control my-3">
+                                <select class="form-select my-3" name="course" aria-label="Default select example">
+
+                                    <option value="Python">Python</option>
+                                    <option value="Java">Java</option>
+                                    <option value="Tally">Tally</option>
+                                </select>
+                                <div class="form-floating my-3">
+                                    <textarea class="form-control" name="address" placeholder="Enter the address"
+                                        id="floatingTextarea"></textarea>
+                                    <label for="floatingTextarea">Enter the address</label>
+                                </div>
+                                <input type="submit" class="btn btn-success button font1" value="Register">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- In the Student Manager Application, Update the Students list in the table -->
+                <div class="col border text-center">
+                    <table class="table">
+                        <thead>
+
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Course</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sno,stud in data.items() %}
+                            <tr>
+                                <th scope="row">{{sno}}</th>
+                                <td>{{stud.name}}</td>
+                                <td>{{stud.age}}</td>
+                                <td>{{stud.course}}</td>
+                                <td>{{stud.address}}</td>
+
+                                <!-- Update the button , popup modal and close and save button -->
+                                <!-- Get Icons from Font Awesome webpage-->
+                                <td><button type="button" class="btn btn-warning " data-bs-toggle="modal"
+                                        data-bs-target="#shoba{{sno}}"><i class="fa-solid fa-file-pen"></i></button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="shoba{{sno}}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/update/{{sno}}" method="post">
+                                                        <input type="text" name="name" value={{stud.name}} id=""
+                                                            placeholder="Enter the student name"
+                                                            class="form-control my-3">
+                                                        <input type="number" name="age" value={{stud.age}} id=""
+                                                            min="12" max="90" placeholder="Enter the student age"
+                                                            class="form-control my-3">
+                                                        {% if stud.course == "Python" %}
+                                                        <select class="form-select my-3" name="course"
+                                                            aria-label="Default select example">
+
+                                                            <option value="Python">Python</option>
+                                                            <option value="Java">Java</option>
+                                                            <option value="Tally">Tally</option>
+                                                        </select>
+                                                        {% elif stud.course == "Tally" %}
+                                                        <select class="form-select my-3" name="course"
+                                                            aria-label="Default select example">
+
+                                                            <option value="Python">Python</option>
+                                                            <option value="Java">Java</option>
+                                                            <option value="Tally" selected>Tally</option>
+                                                        </select>
+                                                        {% elif stud.course == "Java" %}
+                                                        <select class="form-select my-3" name="course"
+                                                            aria-label="Default select example">
+
+                                                            <option value="Python">Python</option>
+                                                            <option value="Java" selected>Java</option>
+                                                            <option value="Tally">Tally</option>
+                                                        </select>
+                                                        {%endif%}
+                                                        <div class="form-floating my-3">
+                                                            <textarea class="form-control" name="address"
+                                                                placeholder="Enter the address"
+                                                                id="floatingTextarea"> {{stud.address}}</textarea>
+                                                            <label for="floatingTextarea">Enter the address</label>
+                                                        </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save
+                                                        changes</button>
+
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- In the Student Manager Application, Delete the Students list in the table -->
+                                    <!-- <button type="button" class="btn btn-danger font1" ><i class="fa-solid fa-trash"></i></button> -->
+                                    <a href="/delete/{{sno}}" class="btn btn-danger font1"><i
+                                            class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Include links from JS header file from bootstap 5 webpage-->
+        <script src="https://kit.fontawesome.com/bebef28066.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

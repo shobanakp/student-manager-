@@ -1,0 +1,14 @@
+{
+   "1": {
+      "name": "Kavitha",
+      "age": "34",
+      "course": "Java",
+      "address": "Madurai"
+   },
+   "2": {
+      "name": "Priya",
+      "age": "16",
+      "course": "Python",
+      "address": "svfas"
+   }
+}
